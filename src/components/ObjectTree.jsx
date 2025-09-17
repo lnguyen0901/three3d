@@ -24,7 +24,7 @@ const renderTreeNodes = (nodes, selectedObjects, dispatch, searchText) => {
   });
 
   return filteredNodes.map((node) => {
-    const isSelected = selectedObjects.includes(node.uuid);
+    const isSelected = selectedObjects.includes(node.name);
 
     if (node.isMesh) {
       // Chỉ render các mesh nếu tên của chúng khớp với tìm kiếm
@@ -32,7 +32,7 @@ const renderTreeNodes = (nodes, selectedObjects, dispatch, searchText) => {
         return (
           <div key={node.uuid} style={{ paddingLeft: "20px" }}>
             <Checkbox checked={isSelected} onChange={() => {
-              dispatch(toggleObjectSelection({ objectUuid: node.uuid }));
+              dispatch(toggleObjectSelection({ objectName: node.name }));
             }}>
               {node.name}
             </Checkbox>

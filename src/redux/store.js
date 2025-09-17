@@ -7,10 +7,10 @@ const selectionSlice = createSlice({
   },
   reducers: {
     toggleObjectSelection: (state, action) => {
-      const { objectUuid } = action.payload;
-      const index = state.selectedObjects.indexOf(objectUuid);
+      const { objectName } = action.payload;
+      const index = state.selectedObjects.indexOf(objectName);
       if (index === -1) {
-        state.selectedObjects.push(objectUuid);
+        state.selectedObjects.push(objectName);
       } else {
         state.selectedObjects.splice(index, 1);
       }
