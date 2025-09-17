@@ -14,8 +14,8 @@ function Model({ modelPath }) {
   const dispatch = useDispatch();
   const handleMeshClick = (event) => {
     event.stopPropagation();
-    const objectName = event.object.name;
-    dispatch(toggleObjectSelection({ objectName }));
+    const objectUuid = event.object.uuid;
+    dispatch(toggleObjectSelection({ objectUuid }));
   };
 
   // Clone the scene and update materials on the clone so we don't mutate the original GLTF

@@ -1,16 +1,16 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const selectionSlice = createSlice({
-  name: 'selection',
+  name: "selection",
   initialState: {
     selectedObjects: [],
   },
   reducers: {
     toggleObjectSelection: (state, action) => {
-      const { objectName } = action.payload;
-      const index = state.selectedObjects.indexOf(objectName);
+      const { objectUuid } = action.payload;
+      const index = state.selectedObjects.indexOf(objectUuid);
       if (index === -1) {
-        state.selectedObjects.push(objectName);
+        state.selectedObjects.push(objectUuid);
       } else {
         state.selectedObjects.splice(index, 1);
       }

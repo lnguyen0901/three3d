@@ -24,18 +24,16 @@ const renderTreeNodes = (nodes, selectedObjects, dispatch, searchText) => {
   });
 
   return filteredNodes.map((node) => {
-    const isSelected = selectedObjects.includes(node.name);
-
-    const handleCheck = () => {
-      dispatch(toggleObjectSelection({ objectName: node.name }));
-    };
+    const isSelected = selectedObjects.includes(node.uuid);
 
     if (node.isMesh) {
       // Chỉ render các mesh nếu tên của chúng khớp với tìm kiếm
       if (node.name.toLowerCase().includes(searchText.toLowerCase())) {
         return (
           <div key={node.uuid} style={{ paddingLeft: "20px" }}>
-            <Checkbox checked={isSelected} onChange={handleCheck}>
+            <Checkbox checked={isSelected} onChange={() => {
+              dispatch(toggleObjectSelection({ objectUuid: node.uuid }));
+            }}>
               {node.name}
             </Checkbox>
           </div>
